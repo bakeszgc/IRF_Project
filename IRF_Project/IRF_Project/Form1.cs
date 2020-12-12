@@ -21,6 +21,8 @@ namespace IRF_Project
         List<string> CurrenciesInput = new List<string>();
         List<string> CurrenciesOutput = new List<string>();
 
+        string curr1, curr2;
+
         public Form1()
         {
             InitializeComponent();
@@ -33,18 +35,21 @@ namespace IRF_Project
 
         private void WebServiceCall()
         {
+            
+            if (currList1.SelectedItem==null) curr1 = "EUR";
+            if (currList2.SelectedItem == null) curr2 = "USD";
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request1 = new GetExchangeRatesRequestBody()
             {
-                currencyNames="EUR",
+                currencyNames= curr1,
                 startDate="2020-01-01",
                 endDate="2020-06-30"
             };
 
             var request2 = new GetExchangeRatesRequestBody()
             {
-                currencyNames = "USD",
+                currencyNames = curr2,
                 startDate = "2020-01-01",
                 endDate = "2020-06-30"
             };
@@ -117,6 +122,21 @@ namespace IRF_Project
 
         }
 
-        
+        private void Atvalt()
+        {
+
+        }
+
+        private void currSearch1_TextChanged(object sender, EventArgs e)
+        {
+            currList1.DataSource = (from x in CurrenciesInput
+                                    where x.Contains(currSearch1.Text)
+                                    select x).ToList();
+        }
+
+        private void currInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
