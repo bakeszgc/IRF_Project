@@ -18,15 +18,20 @@ namespace IRF_Project
         List<RateData> Rates1 = new List<RateData>();
         List<RateData> Rates2 = new List<RateData>();
 
+        List<string> CurrenciesInput = new List<string>();
+        List<string> CurrenciesOutput = new List<string>();
 
         public Form1()
         {
             InitializeComponent();
 
             WebServiceCall();
+            GetCurr();
+            currList1.DataSource = CurrenciesInput;
+            currList2.DataSource = CurrenciesOutput;
         }
 
-        public void WebServiceCall()
+        private void WebServiceCall()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
@@ -85,6 +90,31 @@ namespace IRF_Project
                 var value = decimal.Parse(childElement.InnerText);
                 if (unit != 0) rate.Value = value / unit;
             }
+        }
+
+        public void GetCurr()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var currRequest = new GetCurrenciesRequestBody() { };
+            var currResponse = mnbService.GetCurrencies(currRequest);
+            var currResult = currResponse.GetCurrenciesResult;
+            
+            var currXml = new XmlDocument();
+            currXml.LoadXml(currResult);
+
+            foreach (XmlElement element in currXml.DocumentElement)
+            {
+                
+                for (int i = 0; i < element.InnerText.Length/3; i++)
+                {
+                    string currency;
+                    var currChildElement = (XmlElement)element.ChildNodes[i];
+                    currency = currChildElement.InnerText.ToString();
+                    CurrenciesInput.Add(currency);
+                    CurrenciesOutput.Add(currency);
+                }  
+            }
+
         }
 
         
