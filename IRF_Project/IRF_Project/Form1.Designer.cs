@@ -35,13 +35,15 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.currInput = new System.Windows.Forms.TextBox();
             this.currOutput = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnReverse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // currSearch1
             // 
             this.currSearch1.Location = new System.Drawing.Point(12, 12);
+            this.currSearch1.MaxLength = 3;
             this.currSearch1.Name = "currSearch1";
             this.currSearch1.Size = new System.Drawing.Size(166, 22);
             this.currSearch1.TabIndex = 0;
@@ -50,9 +52,11 @@
             // currSearch2
             // 
             this.currSearch2.Location = new System.Drawing.Point(622, 12);
+            this.currSearch2.MaxLength = 3;
             this.currSearch2.Name = "currSearch2";
             this.currSearch2.Size = new System.Drawing.Size(166, 22);
             this.currSearch2.TabIndex = 1;
+            this.currSearch2.TextChanged += new System.EventHandler(this.currSearch2_TextChanged);
             // 
             // currList1
             // 
@@ -99,16 +103,6 @@
             this.currOutput.TabIndex = 6;
             this.currOutput.Text = "0";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(294, 355);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(421, 355);
@@ -117,13 +111,31 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(294, 355);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnReverse
+            // 
+            this.btnReverse.Location = new System.Drawing.Point(373, 408);
+            this.btnReverse.Name = "btnReverse";
+            this.btnReverse.Size = new System.Drawing.Size(75, 23);
+            this.btnReverse.TabIndex = 9;
+            this.btnReverse.Text = "Reverse";
+            this.btnReverse.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReverse);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.currOutput);
@@ -150,8 +162,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox currInput;
         private System.Windows.Forms.TextBox currOutput;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReverse;
     }
 }
 
