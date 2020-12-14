@@ -27,7 +27,6 @@ namespace IRF_Project
         private bool IsFormLoaded = false;
         private decimal arfolyam, arfolyamOutput;
         private string inputString, outputString;
-        private string inputSearch, outputSearch;
 
         public Form1()
         {
@@ -145,7 +144,7 @@ namespace IRF_Project
             else arfolyamOutput = RatesOutput[0].Value;
 
             if (currInput.Text == "") currOutput.Text = "0";
-            else currOutput.Text = (decimal.Parse(currInput.Text) * arfolyam / arfolyamOutput).ToString();
+            else currOutput.Text = Math.Round((decimal.Parse(currInput.Text) * arfolyam / arfolyamOutput), 4).ToString().TrimEnd(new char[] { '0' });
         }
 
         private void AtvaltasReverse()
@@ -157,7 +156,7 @@ namespace IRF_Project
             else arfolyamOutput = RatesOutput[0].Value;
 
             if (currOutput.Text == "") currInput.Text = "0";
-            else currInput.Text = (decimal.Parse(currOutput.Text) * arfolyamOutput / arfolyam).ToString();
+            else currInput.Text = Math.Round((decimal.Parse(currOutput.Text) * arfolyamOutput / arfolyam),4).ToString().TrimEnd(new char[] { '0' });
         }
 
         private void AtvaltasComplex()
@@ -194,12 +193,9 @@ namespace IRF_Project
 
         private void currSearch1_TextChanged(object sender, EventArgs e)
         {
-
             currList1.DataSource = (from x in CurrenciesInput
                                     where x.Contains(currSearch1.Text.ToUpper())
                                     select x).ToList();
-            inputSearch = currSearch1.Text;
-            
         }
 
         private void currList1_SelectedIndexChanged(object sender, EventArgs e)
