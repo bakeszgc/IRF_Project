@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -71,8 +72,10 @@ namespace IRF_Project
             var request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = selectedCurrency,
-                startDate = DateTime.Today.AddYears(-1).ToString(),
-                endDate = DateTime.Today.ToString()
+                //startDate = DateTime.Today.AddYears(-1).ToString(),
+                //endDate = DateTime.Today.ToString()
+                startDate = dateTimePicker1.Value.AddYears(-1).ToString(),
+                endDate = dateTimePicker1.Value.ToString()
             };
             var response = mnbService.GetExchangeRates(request);
             result = response.GetExchangeRatesResult;
@@ -86,8 +89,10 @@ namespace IRF_Project
             var requestOutput = new GetExchangeRatesRequestBody()
             {
                 currencyNames = selectedCurrencyOutput,
-                startDate = DateTime.Today.AddYears(-1).ToString(),
-                endDate = DateTime.Today.ToString()
+                //startDate = DateTime.Today.AddYears(-1).ToString(),
+                //endDate = DateTime.Today.ToString()
+                startDate = dateTimePicker1.Value.AddYears(-1).ToString(),
+                endDate = dateTimePicker1.Value.ToString()
             };
             var responseOutput = mnbServiceOutput.GetExchangeRates(requestOutput);
             resultOutput = responseOutput.GetExchangeRatesResult;
@@ -191,6 +196,54 @@ namespace IRF_Project
             }
         }
 
+        private void SaveToCsv(int i, StreamWriter sw)
+        {
+            decimal saveArfolyamInput, saveArfolyamOutput;
+            string saveCurrInput, saveCurrOutput;
+
+            if (selectedCurrency == "HUF")
+            {
+                saveArfolyamInput = 1;
+                saveCurrInput = "HUF";
+            }
+            else
+            {
+                saveArfolyamInput = Rates[i].Value;
+                saveCurrInput = Rates[i].Currency;
+            }
+
+            if (selectedCurrencyOutput == "HUF")
+            {
+                saveArfolyamOutput = 1;
+                saveCurrOutput = "HUF";
+            }
+            else
+            {
+                saveArfolyamOutput = RatesOutput[i].Value;
+                saveCurrOutput = RatesOutput[i].Currency;
+            }
+
+            sw.Write(Rates[i].Date.ToString("yyy-MM-dd"));
+            sw.Write(';');
+            if (currInput.Enabled == true)
+            {
+                sw.Write(saveCurrInput);
+                sw.Write('-');
+                sw.Write(saveCurrOutput);
+                sw.Write(';');
+                sw.Write(saveArfolyamInput / saveArfolyamOutput);
+            }
+            else
+            {
+                sw.Write(saveCurrOutput);
+                sw.Write('-');
+                sw.Write(saveCurrInput);
+                sw.Write(';');
+                sw.Write(saveArfolyamOutput / saveArfolyamInput);
+            }
+            sw.WriteLine();
+        }
+
         private void currSearch1_TextChanged(object sender, EventArgs e)
         {
             currList1.DataSource = (from x in CurrenciesInput
@@ -202,12 +255,14 @@ namespace IRF_Project
         {
             selectedCurrency = currList1.SelectedItem.ToString();
             AllProcess();
+            lblInput.Text = selectedCurrency;
         }
 
         private void currList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedCurrencyOutput = currList2.SelectedItem.ToString();
             AllProcessOutput();
+            lblOutput.Text = selectedCurrencyOutput;
         }
 
         private void btnReverse_Click(object sender, EventArgs e)
@@ -221,6 +276,66 @@ namespace IRF_Project
             {
                 currInput.Enabled = true;
                 currOutput.Enabled = false;
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            AllProcess();
+            AllProcessOutput();
+        }
+
+        private void btnSavePastWeek_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Application.StartupPath;
+            sfd.Filter = "Comma Separated Values (*.csv) | *.csv";
+            sfd.DefaultExt = "csv";
+            sfd.AddExtension = true;
+
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            using (StreamWriter sw = new StreamWriter(sfd.FileName,false,Encoding.UTF8))
+            {
+                for (int i = 0; Rates[i].Date >= Rates[0].Date.AddDays(-7); i++)
+                {
+                    SaveToCsv(i, sw);
+                }
+            }
+        }
+
+        private void btnSavePastMonth_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Application.StartupPath;
+            sfd.Filter = "Comma Separated Values (*.csv) | *.csv";
+            sfd.DefaultExt = "csv";
+            sfd.AddExtension = true;
+
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
+            {
+                for (int i = 0; Rates[i].Date >= Rates[0].Date.AddMonths(-1); i++)
+                {
+                    SaveToCsv(i, sw);
+                }
+            }
+        }
+
+        private void btnSavePastYear_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Application.StartupPath;
+            sfd.Filter = "Comma Separated Values (*.csv) | *.csv";
+            sfd.DefaultExt = "csv";
+            sfd.AddExtension = true;
+
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
+            {
+                for (int i = 0; i < Rates.Count(); i++)
+                {
+                    SaveToCsv(i, sw);
+                }
             }
         }
 
