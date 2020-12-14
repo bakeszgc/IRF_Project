@@ -26,7 +26,8 @@ namespace IRF_Project
         private string selectedCurrency, selectedCurrencyOutput;
         private bool IsFormLoaded = false;
         private decimal arfolyam, arfolyamOutput;
-        private string inputString;
+        private string inputString, outputString;
+        private string inputSearch, outputSearch;
 
         public Form1()
         {
@@ -147,6 +148,24 @@ namespace IRF_Project
             else currOutput.Text = (decimal.Parse(currInput.Text) * arfolyam / arfolyamOutput).ToString();
         }
 
+        private void AtvaltasReverse()
+        {
+            if (selectedCurrency == "HUF") arfolyam = 1;
+            else arfolyam = Rates[0].Value;
+
+            if (selectedCurrencyOutput == "HUF") arfolyamOutput = 1;
+            else arfolyamOutput = RatesOutput[0].Value;
+
+            if (currOutput.Text == "") currInput.Text = "0";
+            else currInput.Text = (decimal.Parse(currOutput.Text) * arfolyamOutput / arfolyam).ToString();
+        }
+
+        private void AtvaltasComplex()
+        {
+            if (currInput.Enabled == true) Atvaltas();
+            else AtvaltasReverse();
+        }
+
         private void AllProcess()
         {
             if (IsFormLoaded == true)
@@ -156,7 +175,7 @@ namespace IRF_Project
                     WebServiceCall();
                     ProcessXml();
                 }
-                Atvaltas();
+                AtvaltasComplex();
             }
         }
 
@@ -169,15 +188,18 @@ namespace IRF_Project
                     WebServiceCallOutput();
                     ProcessXmlOutput();
                 }
-                Atvaltas();
+                AtvaltasComplex();
             }
         }
 
         private void currSearch1_TextChanged(object sender, EventArgs e)
         {
+
             currList1.DataSource = (from x in CurrenciesInput
                                     where x.Contains(currSearch1.Text.ToUpper())
                                     select x).ToList();
+            inputSearch = currSearch1.Text;
+            
         }
 
         private void currList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,13 +214,43 @@ namespace IRF_Project
             AllProcessOutput();
         }
 
+        private void btnReverse_Click(object sender, EventArgs e)
+        {
+            if (currOutput.Enabled==false)
+            {
+                currInput.Enabled = false;
+                currOutput.Enabled = true;
+            }
+            else
+            {
+                currInput.Enabled = true;
+                currOutput.Enabled = false;
+            }
+        }
+
+        private void currOutput_TextChanged(object sender, EventArgs e)
+        {
+            Regex numRegex = new Regex("^[0-9]*[,]?[0-9]*$");
+
+            if (numRegex.IsMatch(currOutput.Text))
+            {
+                AtvaltasComplex();
+                outputString = currOutput.Text;
+            }
+            else
+            {
+                currOutput.Text = outputString;
+                MessageBox.Show("Ebbe a mezőbe csak számokat és legfeljebb egy tizedesvesszőt írhatsz!", "Figyelem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void currInput_TextChanged(object sender, EventArgs e)
         {
             Regex numRegex = new Regex("^[0-9]*[,]?[0-9]*$");
 
             if (numRegex.IsMatch(currInput.Text))
             {
-                Atvaltas();
+                AtvaltasComplex();
                 inputString = currInput.Text;
             }
             else

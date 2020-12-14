@@ -102,6 +102,7 @@
             this.currOutput.Size = new System.Drawing.Size(211, 22);
             this.currOutput.TabIndex = 6;
             this.currOutput.Text = "0";
+            this.currOutput.TextChanged += new System.EventHandler(this.currOutput_TextChanged);
             // 
             // button2
             // 
@@ -129,6 +130,7 @@
             this.btnReverse.TabIndex = 9;
             this.btnReverse.Text = "Reverse";
             this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
             // 
             // Form1
             // 
