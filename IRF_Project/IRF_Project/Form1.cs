@@ -15,89 +15,27 @@ namespace IRF_Project
 {
     public partial class Form1 : Form
     {
-        List<RateData> Rates1 = new List<RateData>();
-        List<RateData> Rates2 = new List<RateData>();
+        BindingList<RateData> Rates = new BindingList<RateData>();
 
         List<string> CurrenciesInput = new List<string>();
         List<string> CurrenciesOutput = new List<string>();
 
-        string curr1, curr2;
+        private string result;
+        private string selectedCurrency;
+        private bool IsFormLoaded = false;
+        private decimal arfolyam;
 
         public Form1()
         {
             InitializeComponent();
 
-            WebServiceCall();
+            
             GetCurr();
             currList1.DataSource = CurrenciesInput;
             currList2.DataSource = CurrenciesOutput;
-        }
+        }        
 
-        private void WebServiceCall()
-        {
-            
-            if (currList1.SelectedItem==null) curr1 = "EUR";
-            if (currList2.SelectedItem == null) curr2 = "USD";
-            var mnbService = new MNBArfolyamServiceSoapClient();
-
-            var request1 = new GetExchangeRatesRequestBody()
-            {
-                currencyNames= curr1,
-                startDate="2020-01-01",
-                endDate="2020-06-30"
-            };
-
-            var request2 = new GetExchangeRatesRequestBody()
-            {
-                currencyNames = curr2,
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
-            };
-
-            var response1 = mnbService.GetExchangeRates(request1);
-            var response2 = mnbService.GetExchangeRates(request2);
-
-            var result1 = response1.GetExchangeRatesResult;
-            var result2 = response2.GetExchangeRatesResult;
-
-            var xml1 = new XmlDocument();
-            var xml2 = new XmlDocument();
-
-            xml1.LoadXml(result1);
-            xml2.LoadXml(result2);
-
-            foreach (XmlElement element1 in xml1.DocumentElement)
-            {
-                var rate = new RateData();
-                Rates1.Add(rate);
-
-                rate.Date = DateTime.Parse(element1.GetAttribute("date"));
-
-                var childElement = (XmlElement)element1.ChildNodes[0];
-                rate.Currency = childElement.GetAttribute("curr");
-
-                var unit = decimal.Parse(childElement.GetAttribute("unit"));
-                var value = decimal.Parse(childElement.InnerText);
-                if (unit!=1) rate.Value = value / unit;
-            }
-
-            foreach (XmlElement element2 in xml2.DocumentElement)
-            {
-                var rate = new RateData();
-                Rates2.Add(rate);
-
-                rate.Date = DateTime.Parse(element2.GetAttribute("date"));
-
-                var childElement = (XmlElement)element2.ChildNodes[0];
-                rate.Currency = childElement.GetAttribute("curr");
-
-                var unit = decimal.Parse(childElement.GetAttribute("unit"));
-                var value = decimal.Parse(childElement.InnerText);
-                if (unit != 0) rate.Value = value / unit;
-            }
-        }
-
-        public void GetCurr()
+        private void GetCurr()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
             var currRequest = new GetCurrenciesRequestBody() { };
@@ -122,21 +60,99 @@ namespace IRF_Project
 
         }
 
-        private void Atvalt()
+        private void WebServiceCall()
         {
+            Rates.Clear();
 
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetExchangeRatesRequestBody()
+            {
+                currencyNames = selectedCurrency,
+                startDate = DateTime.Today.AddYears(-1).ToString(),
+                endDate = DateTime.Today.ToString()
+            };
+
+            var response = mnbService.GetExchangeRates(request);
+            result = response.GetExchangeRatesResult;
+        }
+
+        private void ProcessXml()
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                RateData r = new RateData();
+                Rates.Add(r);
+
+                r.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                r.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0) r.Value = value / unit;
+            }
+        }
+
+        private void Atvaltas()
+        {
+            if (selectedCurrency == "HUF") arfolyam = 1;
+            else arfolyam = Rates[0].Value;
+
+            if (currInput.Text == "") currOutput.Text = "0";
+            else currOutput.Text = (decimal.Parse(currInput.Text) * arfolyam).ToString();
+        }
+
+        private void AllProcess()
+        {
+            if (IsFormLoaded == true)
+            {
+                if (selectedCurrency != "HUF")
+                {
+                    WebServiceCall();
+                    ProcessXml();
+                }
+                Atvaltas();
+            }
         }
 
         private void currSearch1_TextChanged(object sender, EventArgs e)
         {
-            currList1.DataSource = (from x in CurrenciesInput
-                                    where x.Contains(currSearch1.Text)
-                                    select x).ToList();
+            
+        }
+
+        private void currList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedCurrency = currList1.SelectedItem.ToString();
+            AllProcess();
+        }
+
+        private void currList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void currInput_TextChanged(object sender, EventArgs e)
         {
+            Atvaltas();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            IsFormLoaded = true;
         }
     }
 }
