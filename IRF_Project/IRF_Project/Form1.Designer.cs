@@ -47,37 +47,44 @@
             // 
             // currSearch1
             // 
+            this.currSearch1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.currSearch1.Location = new System.Drawing.Point(11, 11);
             this.currSearch1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.currSearch1.MaxLength = 3;
             this.currSearch1.Name = "currSearch1";
-            this.currSearch1.Size = new System.Drawing.Size(120, 20);
+            this.currSearch1.Size = new System.Drawing.Size(120, 21);
             this.currSearch1.TabIndex = 0;
             this.currSearch1.TextChanged += new System.EventHandler(this.currSearch1_TextChanged);
             // 
             // currSearch2
             // 
+            this.currSearch2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currSearch2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.currSearch2.Location = new System.Drawing.Point(736, 11);
             this.currSearch2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.currSearch2.MaxLength = 3;
             this.currSearch2.Name = "currSearch2";
-            this.currSearch2.Size = new System.Drawing.Size(120, 20);
+            this.currSearch2.Size = new System.Drawing.Size(120, 21);
             this.currSearch2.TabIndex = 1;
             this.currSearch2.TextChanged += new System.EventHandler(this.currSearch2_TextChanged);
             // 
             // currList2
             // 
+            this.currList2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.currList2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.currList2.FormattingEnabled = true;
+            this.currList2.ItemHeight = 16;
             this.currList2.Location = new System.Drawing.Point(736, 42);
             this.currList2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.currList2.Name = "currList2";
-            this.currList2.Size = new System.Drawing.Size(120, 368);
+            this.currList2.Size = new System.Drawing.Size(120, 372);
             this.currList2.TabIndex = 3;
             this.currList2.SelectedIndexChanged += new System.EventHandler(this.currList2_SelectedIndexChanged);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(277, 90);
+            this.dateTimePicker1.Location = new System.Drawing.Point(213, 251);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(194, 20);
@@ -86,21 +93,27 @@
             // 
             // currInput
             // 
-            this.currInput.Location = new System.Drawing.Point(245, 159);
+            this.currInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.currInput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.currInput.Location = new System.Drawing.Point(201, 42);
             this.currInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.currInput.Name = "currInput";
-            this.currInput.Size = new System.Drawing.Size(314, 20);
+            this.currInput.Size = new System.Drawing.Size(314, 86);
             this.currInput.TabIndex = 5;
             this.currInput.Text = "0";
             this.currInput.TextChanged += new System.EventHandler(this.currInput_TextChanged);
             // 
             // currOutput
             // 
+            this.currOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.currOutput.Enabled = false;
-            this.currOutput.Location = new System.Drawing.Point(245, 207);
+            this.currOutput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.currOutput.Location = new System.Drawing.Point(201, 137);
             this.currOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.currOutput.Name = "currOutput";
-            this.currOutput.Size = new System.Drawing.Size(293, 20);
+            this.currOutput.Size = new System.Drawing.Size(314, 86);
             this.currOutput.TabIndex = 6;
             this.currOutput.Text = "0";
             this.currOutput.TextChanged += new System.EventHandler(this.currOutput_TextChanged);
@@ -151,25 +164,29 @@
             // 
             // lblInput
             // 
+            this.lblInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInput.AutoSize = true;
+            this.lblInput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblInput.ForeColor = System.Drawing.Color.White;
-            this.lblInput.Location = new System.Drawing.Point(574, 162);
+            this.lblInput.Location = new System.Drawing.Point(531, 46);
             this.lblInput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInput.Name = "lblInput";
-            this.lblInput.Size = new System.Drawing.Size(54, 13);
+            this.lblInput.Size = new System.Drawing.Size(149, 78);
             this.lblInput.TabIndex = 10;
-            this.lblInput.Text = "currency1";
+            this.lblInput.Text = "HUF";
             // 
             // lblOutput
             // 
+            this.lblOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOutput.AutoSize = true;
+            this.lblOutput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblOutput.ForeColor = System.Drawing.Color.White;
-            this.lblOutput.Location = new System.Drawing.Point(592, 210);
+            this.lblOutput.Location = new System.Drawing.Point(531, 141);
             this.lblOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOutput.Name = "lblOutput";
-            this.lblOutput.Size = new System.Drawing.Size(54, 13);
+            this.lblOutput.Size = new System.Drawing.Size(147, 78);
             this.lblOutput.TabIndex = 11;
-            this.lblOutput.Text = "currency2";
+            this.lblOutput.Text = "EUR";
             // 
             // btnSavePastYear
             // 
@@ -189,10 +206,14 @@
             // 
             // currList1
             // 
+            this.currList1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.currList1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.currList1.FormattingEnabled = true;
+            this.currList1.ItemHeight = 16;
             this.currList1.Location = new System.Drawing.Point(11, 42);
             this.currList1.Name = "currList1";
-            this.currList1.Size = new System.Drawing.Size(120, 368);
+            this.currList1.Size = new System.Drawing.Size(120, 372);
             this.currList1.TabIndex = 13;
             this.currList1.SelectedIndexChanged += new System.EventHandler(this.currList1_SelectedIndexChanged);
             // 
@@ -210,6 +231,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
