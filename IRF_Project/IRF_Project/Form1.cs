@@ -30,6 +30,8 @@ namespace IRF_Project
         private decimal arfolyam, arfolyamOutput;
         private string inputString, outputString;
 
+        int tickWeekCountUp, tickWeekCountDown, tickMonthCountUp, tickMonthCountDown, tickYearCountUp, tickYearCountDown;
+
         public Form1()
         {
             InitializeComponent();
@@ -244,6 +246,16 @@ namespace IRF_Project
             sw.WriteLine();
         }
 
+        private void ButtonAutoSize()
+        {
+            btnSavePastWeek.Width = (ClientSize.Width - 284) / 3;
+            btnSavePastMonth.Width = (ClientSize.Width - 284) / 3;
+            btnSavePastYear.Width = (ClientSize.Width - 284) / 3 + 1;
+
+            btnSavePastMonth.Left = btnSavePastWeek.Left + btnSavePastWeek.Width;
+            btnSavePastYear.Left = btnSavePastMonth.Left + btnSavePastMonth.Width;
+        }
+
         private void currSearch1_TextChanged(object sender, EventArgs e)
         {
             currList1.DataSource = (from x in CurrenciesInput
@@ -345,42 +357,133 @@ namespace IRF_Project
         private void btnSavePastWeek_MouseEnter(object sender, EventArgs e)
         {
             btnSavePastWeek.ForeColor = Color.FromArgb(15, 32, 40);
+            tWeekUp.Start();
         }
 
         private void btnSavePastWeek_MouseLeave(object sender, EventArgs e)
         {
             btnSavePastWeek.ForeColor = Color.White;
+            tWeekDown.Start();
         }
 
         private void btnSavePastMonth_MouseEnter(object sender, EventArgs e)
         {
             btnSavePastMonth.ForeColor = Color.FromArgb(15, 32, 40);
+            tMonthUp.Start();
         }
 
         private void btnSavePastMonth_MouseLeave(object sender, EventArgs e)
         {
             btnSavePastMonth.ForeColor = Color.White;
+            tMonthDown.Start();
         }
 
         private void btnSavePastYear_MouseEnter(object sender, EventArgs e)
         {
             btnSavePastYear.ForeColor = Color.FromArgb(15, 32, 40);
+            tYearUp.Start();
         }
 
         private void btnSavePastYear_MouseLeave(object sender, EventArgs e)
         {
             btnSavePastYear.ForeColor = Color.White;
+            tYearDown.Start();
         }
 
         private void Form1_ClientSizeChanged(object sender, EventArgs e)
         {
-            btnSavePastWeek.Width = (ClientSize.Width - 284) / 3;
-            btnSavePastMonth.Width = (ClientSize.Width - 284) / 3;
-            btnSavePastYear.Width = (ClientSize.Width - 284) / 3+1;
-
-            btnSavePastMonth.Left = btnSavePastWeek.Left + btnSavePastWeek.Width;
-            btnSavePastYear.Left = btnSavePastMonth.Left + btnSavePastMonth.Width;
+            ButtonAutoSize();
         }
+
+        private void tWeekUp_Tick(object sender, EventArgs e)
+        {
+            if (tickWeekCountUp > 10)
+            {
+                tWeekUp.Stop();
+            }
+            else
+            {
+                btnSavePastWeek.Top--;
+                btnSavePastWeek.Height++;
+                tickWeekCountUp++;
+            }
+        }
+
+        private void tWeekDown_Tick(object sender, EventArgs e)
+        {
+            if (tickWeekCountDown > tickWeekCountUp - 1)
+            {
+                tWeekDown.Stop();
+                tickWeekCountUp = 0;
+                tickWeekCountDown = 0;
+            }
+            else
+            {
+                btnSavePastWeek.Top++;
+                btnSavePastWeek.Height--;
+                tickWeekCountDown++;
+            }
+        }
+
+        private void tMonthUp_Tick(object sender, EventArgs e)
+        {
+            if (tickMonthCountUp > 10)
+            {
+                tMonthUp.Stop();
+            }
+            else
+            {
+                btnSavePastMonth.Top--;
+                btnSavePastMonth.Height++;
+                tickMonthCountUp++;
+            }
+        }
+
+        private void tMonthDown_Tick(object sender, EventArgs e)
+        {
+            if (tickMonthCountDown > tickMonthCountUp - 1)
+            {
+                tMonthDown.Stop();
+                tickMonthCountUp = 0;
+                tickMonthCountDown = 0;
+            }
+            else
+            {
+                btnSavePastMonth.Top++;
+                btnSavePastMonth.Height--;
+                tickMonthCountDown++;
+            }
+        }
+        private void tYearUp_Tick(object sender, EventArgs e)
+        {
+            if (tickYearCountUp > 10)
+            {
+                tYearUp.Stop();
+            }
+            else
+            {
+                btnSavePastYear.Top--;
+                btnSavePastYear.Height++;
+                tickYearCountUp++;
+            }
+        }
+
+        private void tYearDown_Tick(object sender, EventArgs e)
+        {
+            if (tickYearCountDown > tickYearCountUp - 1)
+            {
+                tYearDown.Stop();
+                tickYearCountUp = 0;
+                tickYearCountDown = 0;
+            }
+            else
+            {
+                btnSavePastYear.Top++;
+                btnSavePastYear.Height--;
+                tickYearCountDown++;
+            }
+        }
+
 
         private void currOutput_TextChanged(object sender, EventArgs e)
         {
@@ -421,6 +524,7 @@ namespace IRF_Project
             btnReverse.Text = "\uE895";
             label1.Text= "\uE71E";
             label2.Text= "\uE71E";
+            ButtonAutoSize();
             IsFormLoaded = true;
         }
 
