@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 
 namespace IRF_Project
@@ -19,6 +20,9 @@ namespace IRF_Project
     {
         List<RateData> Rates = new List<RateData>();
         List<RateData> RatesOutput = new List<RateData>();
+
+        List<decimal> ChangeRates = new List<decimal>();
+        List<decimal> ChartChangeRates = new List<decimal>();
 
         List<string> CurrenciesInput = new List<string>();
         List<string> CurrenciesOutput = new List<string>();
@@ -33,7 +37,6 @@ namespace IRF_Project
         {
             InitializeComponent();
 
-            
             GetCurr();
             currList1.DataSource = CurrenciesInput;
             currList2.DataSource = CurrenciesOutput;
@@ -149,7 +152,7 @@ namespace IRF_Project
             else arfolyamOutput = RatesOutput[0].Value;
 
             if (currInput.Text == "") currOutput.Text = "0";
-            else currOutput.Text = Math.Round((decimal.Parse(currInput.Text) * arfolyam / arfolyamOutput), 4).ToString().TrimEnd(new char[] { '0' });
+            else currOutput.Text = Math.Round((decimal.Parse(currInput.Text) * arfolyam / arfolyamOutput), 4).ToString();
         }
 
         private void AtvaltasReverse()
@@ -161,7 +164,7 @@ namespace IRF_Project
             else arfolyamOutput = RatesOutput[0].Value;
 
             if (currOutput.Text == "") currInput.Text = "0";
-            else currInput.Text = Math.Round((decimal.Parse(currOutput.Text) * arfolyamOutput / arfolyam),4).ToString().TrimEnd(new char[] { '0' });
+            else currInput.Text = Math.Round((decimal.Parse(currOutput.Text) * arfolyamOutput / arfolyam),4).ToString();
         }
 
         private void AtvaltasComplex()
@@ -339,6 +342,42 @@ namespace IRF_Project
             }
         }
 
+        private void btnSavePastWeek_MouseEnter(object sender, EventArgs e)
+        {
+            btnSavePastWeek.BackColor = Color.FromArgb(195, 181, 2);
+            btnSavePastWeek.ForeColor = Color.FromArgb(15, 32, 40);
+        }
+
+        private void btnSavePastWeek_MouseLeave(object sender, EventArgs e)
+        {
+            btnSavePastWeek.BackColor = Color.FromArgb(0 ,195, 181, 2);
+            btnSavePastWeek.ForeColor = Color.White;
+        }
+
+        private void btnSavePastMonth_MouseEnter(object sender, EventArgs e)
+        {
+            btnSavePastMonth.BackColor = Color.FromArgb(195, 181, 2);
+            btnSavePastMonth.ForeColor = Color.FromArgb(15, 32, 40);
+        }
+
+        private void btnSavePastMonth_MouseLeave(object sender, EventArgs e)
+        {
+            btnSavePastMonth.BackColor = Color.FromArgb(0, 195, 181, 2);
+            btnSavePastMonth.ForeColor = Color.White;
+        }
+
+        private void btnSavePastYear_MouseEnter(object sender, EventArgs e)
+        {
+            btnSavePastYear.BackColor = Color.FromArgb(195, 181, 2);
+            btnSavePastYear.ForeColor = Color.FromArgb(15, 32, 40);
+        }
+
+        private void btnSavePastYear_MouseLeave(object sender, EventArgs e)
+        {
+            btnSavePastYear.BackColor = Color.FromArgb(0, 195, 181, 2);
+            btnSavePastYear.ForeColor = Color.White;
+        }
+
         private void currOutput_TextChanged(object sender, EventArgs e)
         {
             Regex numRegex = new Regex("^[0-9]*[,]?[0-9]*$");
@@ -367,7 +406,7 @@ namespace IRF_Project
             else
             {
                 currInput.Text = inputString;
-                MessageBox.Show("Ebbe a mezőbe csak számokat és legfeljebb egy tizedesvesszőt írhatsz!","Figyelem",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Ebbe a mezőbe csak számokat és legfeljebb egy tizedesvesszőt írhatsz!", "Figyelem", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -375,6 +414,9 @@ namespace IRF_Project
         {
             AllProcess();
             AllProcessOutput();
+            btnReverse.Text = "\uE895";
+            label1.Text= "\uE71E";
+            label2.Text= "\uE71E";
             IsFormLoaded = true;
         }
 
