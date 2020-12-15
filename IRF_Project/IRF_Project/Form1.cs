@@ -356,37 +356,31 @@ namespace IRF_Project
 
         private void btnSavePastWeek_MouseEnter(object sender, EventArgs e)
         {
-            btnSavePastWeek.ForeColor = Color.FromArgb(15, 32, 40);
             tWeekUp.Start();
         }
 
         private void btnSavePastWeek_MouseLeave(object sender, EventArgs e)
         {
-            btnSavePastWeek.ForeColor = Color.White;
             tWeekDown.Start();
         }
 
         private void btnSavePastMonth_MouseEnter(object sender, EventArgs e)
         {
-            btnSavePastMonth.ForeColor = Color.FromArgb(15, 32, 40);
             tMonthUp.Start();
         }
 
         private void btnSavePastMonth_MouseLeave(object sender, EventArgs e)
         {
-            btnSavePastMonth.ForeColor = Color.White;
             tMonthDown.Start();
         }
 
         private void btnSavePastYear_MouseEnter(object sender, EventArgs e)
         {
-            btnSavePastYear.ForeColor = Color.FromArgb(15, 32, 40);
             tYearUp.Start();
         }
 
         private void btnSavePastYear_MouseLeave(object sender, EventArgs e)
         {
-            btnSavePastYear.ForeColor = Color.White;
             tYearDown.Start();
         }
 

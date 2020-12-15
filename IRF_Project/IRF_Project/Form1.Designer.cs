@@ -35,12 +35,9 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.currInput = new System.Windows.Forms.TextBox();
             this.currOutput = new System.Windows.Forms.TextBox();
-            this.btnSavePastWeek = new System.Windows.Forms.Button();
-            this.btnSavePastMonth = new System.Windows.Forms.Button();
             this.btnReverse = new System.Windows.Forms.Button();
             this.lblInput = new System.Windows.Forms.Label();
             this.lblOutput = new System.Windows.Forms.Label();
-            this.btnSavePastYear = new System.Windows.Forms.Button();
             this.currList1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,6 +49,9 @@
             this.tMonthDown = new System.Windows.Forms.Timer(this.components);
             this.tYearUp = new System.Windows.Forms.Timer(this.components);
             this.tYearDown = new System.Windows.Forms.Timer(this.components);
+            this.btnSavePastMonth = new IRF_Project.Entities.SaveButton();
+            this.btnSavePastWeek = new IRF_Project.Entities.SaveButton();
+            this.btnSavePastYear = new IRF_Project.Entities.SaveButton();
             this.SuspendLayout();
             // 
             // currSearch1
@@ -132,48 +132,6 @@
             this.currOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.currOutput.TextChanged += new System.EventHandler(this.currOutput_TextChanged);
             // 
-            // btnSavePastWeek
-            // 
-            this.btnSavePastWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSavePastWeek.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.btnSavePastWeek.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSavePastWeek.FlatAppearance.BorderSize = 0;
-            this.btnSavePastWeek.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
-            this.btnSavePastWeek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSavePastWeek.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSavePastWeek.ForeColor = System.Drawing.Color.White;
-            this.btnSavePastWeek.Location = new System.Drawing.Point(189, 421);
-            this.btnSavePastWeek.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSavePastWeek.Name = "btnSavePastWeek";
-            this.btnSavePastWeek.Size = new System.Drawing.Size(259, 98);
-            this.btnSavePastWeek.TabIndex = 8;
-            this.btnSavePastWeek.Text = "Save Past Week";
-            this.btnSavePastWeek.UseVisualStyleBackColor = false;
-            this.btnSavePastWeek.Click += new System.EventHandler(this.btnSavePastWeek_Click);
-            this.btnSavePastWeek.MouseEnter += new System.EventHandler(this.btnSavePastWeek_MouseEnter);
-            this.btnSavePastWeek.MouseLeave += new System.EventHandler(this.btnSavePastWeek_MouseLeave);
-            // 
-            // btnSavePastMonth
-            // 
-            this.btnSavePastMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSavePastMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.btnSavePastMonth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSavePastMonth.FlatAppearance.BorderSize = 0;
-            this.btnSavePastMonth.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
-            this.btnSavePastMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSavePastMonth.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSavePastMonth.ForeColor = System.Drawing.Color.White;
-            this.btnSavePastMonth.Location = new System.Drawing.Point(448, 421);
-            this.btnSavePastMonth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSavePastMonth.Name = "btnSavePastMonth";
-            this.btnSavePastMonth.Size = new System.Drawing.Size(260, 98);
-            this.btnSavePastMonth.TabIndex = 7;
-            this.btnSavePastMonth.Text = "Save Past Month";
-            this.btnSavePastMonth.UseVisualStyleBackColor = false;
-            this.btnSavePastMonth.Click += new System.EventHandler(this.btnSavePastMonth_Click);
-            this.btnSavePastMonth.MouseEnter += new System.EventHandler(this.btnSavePastMonth_MouseEnter);
-            this.btnSavePastMonth.MouseLeave += new System.EventHandler(this.btnSavePastMonth_MouseLeave);
-            // 
             // btnReverse
             // 
             this.btnReverse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
@@ -215,27 +173,6 @@
             this.lblOutput.Size = new System.Drawing.Size(185, 96);
             this.lblOutput.TabIndex = 11;
             this.lblOutput.Text = "EUR";
-            // 
-            // btnSavePastYear
-            // 
-            this.btnSavePastYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSavePastYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
-            this.btnSavePastYear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSavePastYear.FlatAppearance.BorderSize = 0;
-            this.btnSavePastYear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
-            this.btnSavePastYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSavePastYear.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSavePastYear.ForeColor = System.Drawing.Color.White;
-            this.btnSavePastYear.Location = new System.Drawing.Point(708, 421);
-            this.btnSavePastYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSavePastYear.Name = "btnSavePastYear";
-            this.btnSavePastYear.Size = new System.Drawing.Size(260, 98);
-            this.btnSavePastYear.TabIndex = 12;
-            this.btnSavePastYear.Text = "Save Past Year";
-            this.btnSavePastYear.UseVisualStyleBackColor = false;
-            this.btnSavePastYear.Click += new System.EventHandler(this.btnSavePastYear_Click);
-            this.btnSavePastYear.MouseEnter += new System.EventHandler(this.btnSavePastYear_MouseEnter);
-            this.btnSavePastYear.MouseLeave += new System.EventHandler(this.btnSavePastYear_MouseLeave);
             // 
             // currList1
             // 
@@ -328,20 +265,76 @@
             this.tYearDown.Interval = 10;
             this.tYearDown.Tick += new System.EventHandler(this.tYearDown_Tick);
             // 
+            // btnSavePastMonth
+            // 
+            this.btnSavePastMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSavePastMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btnSavePastMonth.FlatAppearance.BorderSize = 0;
+            this.btnSavePastMonth.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
+            this.btnSavePastMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePastMonth.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnSavePastMonth.ForeColor = System.Drawing.Color.White;
+            this.btnSavePastMonth.Location = new System.Drawing.Point(449, 421);
+            this.btnSavePastMonth.Name = "btnSavePastMonth";
+            this.btnSavePastMonth.Size = new System.Drawing.Size(260, 98);
+            this.btnSavePastMonth.TabIndex = 19;
+            this.btnSavePastMonth.Text = "Save Past Month";
+            this.btnSavePastMonth.UseVisualStyleBackColor = false;
+            this.btnSavePastMonth.Click += new System.EventHandler(this.btnSavePastMonth_Click);
+            this.btnSavePastMonth.MouseEnter += new System.EventHandler(this.btnSavePastMonth_MouseEnter);
+            this.btnSavePastMonth.MouseLeave += new System.EventHandler(this.btnSavePastMonth_MouseLeave);
+            // 
+            // btnSavePastWeek
+            // 
+            this.btnSavePastWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSavePastWeek.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btnSavePastWeek.FlatAppearance.BorderSize = 0;
+            this.btnSavePastWeek.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
+            this.btnSavePastWeek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePastWeek.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnSavePastWeek.ForeColor = System.Drawing.Color.White;
+            this.btnSavePastWeek.Location = new System.Drawing.Point(189, 421);
+            this.btnSavePastWeek.Name = "btnSavePastWeek";
+            this.btnSavePastWeek.Size = new System.Drawing.Size(260, 98);
+            this.btnSavePastWeek.TabIndex = 18;
+            this.btnSavePastWeek.Text = "Save Past Week";
+            this.btnSavePastWeek.UseVisualStyleBackColor = false;
+            this.btnSavePastWeek.Click += new System.EventHandler(this.btnSavePastWeek_Click);
+            this.btnSavePastWeek.MouseEnter += new System.EventHandler(this.btnSavePastWeek_MouseEnter);
+            this.btnSavePastWeek.MouseLeave += new System.EventHandler(this.btnSavePastWeek_MouseLeave);
+            // 
+            // btnSavePastYear
+            // 
+            this.btnSavePastYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSavePastYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btnSavePastYear.FlatAppearance.BorderSize = 0;
+            this.btnSavePastYear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
+            this.btnSavePastYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePastYear.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnSavePastYear.ForeColor = System.Drawing.Color.White;
+            this.btnSavePastYear.Location = new System.Drawing.Point(709, 421);
+            this.btnSavePastYear.Name = "btnSavePastYear";
+            this.btnSavePastYear.Size = new System.Drawing.Size(260, 98);
+            this.btnSavePastYear.TabIndex = 20;
+            this.btnSavePastYear.Text = "Save Past Year";
+            this.btnSavePastYear.UseVisualStyleBackColor = false;
+            this.btnSavePastYear.Click += new System.EventHandler(this.btnSavePastYear_Click);
+            this.btnSavePastYear.MouseEnter += new System.EventHandler(this.btnSavePastYear_MouseEnter);
+            this.btnSavePastYear.MouseLeave += new System.EventHandler(this.btnSavePastYear_MouseLeave);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(1156, 519);
+            this.Controls.Add(this.btnSavePastMonth);
             this.Controls.Add(this.btnReverse);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.currList1);
             this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.lblInput);
-            this.Controls.Add(this.btnSavePastWeek);
-            this.Controls.Add(this.btnSavePastMonth);
             this.Controls.Add(this.currOutput);
             this.Controls.Add(this.currInput);
             this.Controls.Add(this.dateTimePicker1);
@@ -350,9 +343,10 @@
             this.Controls.Add(this.currSearch1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btnSavePastWeek);
             this.Controls.Add(this.btnSavePastYear);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(821, 506);
+            this.MinimumSize = new System.Drawing.Size(900, 500);
             this.Name = "Form1";
             this.Text = "Currency Converter";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -370,12 +364,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox currInput;
         private System.Windows.Forms.TextBox currOutput;
-        private System.Windows.Forms.Button btnSavePastWeek;
-        private System.Windows.Forms.Button btnSavePastMonth;
         private System.Windows.Forms.Button btnReverse;
         private System.Windows.Forms.Label lblInput;
         private System.Windows.Forms.Label lblOutput;
-        private System.Windows.Forms.Button btnSavePastYear;
         private System.Windows.Forms.ListBox currList1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -387,6 +378,9 @@
         private System.Windows.Forms.Timer tMonthDown;
         private System.Windows.Forms.Timer tYearUp;
         private System.Windows.Forms.Timer tYearDown;
+        private Entities.SaveButton btnSavePastWeek;
+        private Entities.SaveButton btnSavePastMonth;
+        private Entities.SaveButton btnSavePastYear;
     }
 }
 
