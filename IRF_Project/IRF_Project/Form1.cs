@@ -21,9 +21,6 @@ namespace IRF_Project
         List<RateData> Rates = new List<RateData>();
         List<RateData> RatesOutput = new List<RateData>();
 
-        List<decimal> ChangeRates = new List<decimal>();
-        List<decimal> ChartChangeRates = new List<decimal>();
-
         List<string> CurrenciesInput = new List<string>();
         List<string> CurrenciesOutput = new List<string>();
 
@@ -304,6 +301,7 @@ namespace IRF_Project
                     SaveToCsv(i, sw);
                 }
             }
+            MessageBox.Show("Sikeres mentés!", "Figyelem!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSavePastMonth_Click(object sender, EventArgs e)
@@ -322,6 +320,7 @@ namespace IRF_Project
                     SaveToCsv(i, sw);
                 }
             }
+            MessageBox.Show("Sikeres mentés!", "Figyelem!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSavePastYear_Click(object sender, EventArgs e)
@@ -340,42 +339,47 @@ namespace IRF_Project
                     SaveToCsv(i, sw);
                 }
             }
+            MessageBox.Show("Sikeres mentés!", "Figyelem!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSavePastWeek_MouseEnter(object sender, EventArgs e)
         {
-            btnSavePastWeek.BackColor = Color.FromArgb(195, 181, 2);
             btnSavePastWeek.ForeColor = Color.FromArgb(15, 32, 40);
         }
 
         private void btnSavePastWeek_MouseLeave(object sender, EventArgs e)
         {
-            btnSavePastWeek.BackColor = Color.FromArgb(0 ,195, 181, 2);
             btnSavePastWeek.ForeColor = Color.White;
         }
 
         private void btnSavePastMonth_MouseEnter(object sender, EventArgs e)
         {
-            btnSavePastMonth.BackColor = Color.FromArgb(195, 181, 2);
             btnSavePastMonth.ForeColor = Color.FromArgb(15, 32, 40);
         }
 
         private void btnSavePastMonth_MouseLeave(object sender, EventArgs e)
         {
-            btnSavePastMonth.BackColor = Color.FromArgb(0, 195, 181, 2);
             btnSavePastMonth.ForeColor = Color.White;
         }
 
         private void btnSavePastYear_MouseEnter(object sender, EventArgs e)
         {
-            btnSavePastYear.BackColor = Color.FromArgb(195, 181, 2);
             btnSavePastYear.ForeColor = Color.FromArgb(15, 32, 40);
         }
 
         private void btnSavePastYear_MouseLeave(object sender, EventArgs e)
         {
-            btnSavePastYear.BackColor = Color.FromArgb(0, 195, 181, 2);
             btnSavePastYear.ForeColor = Color.White;
+        }
+
+        private void Form1_ClientSizeChanged(object sender, EventArgs e)
+        {
+            btnSavePastWeek.Width = (ClientSize.Width - 284) / 3;
+            btnSavePastMonth.Width = (ClientSize.Width - 284) / 3;
+            btnSavePastYear.Width = (ClientSize.Width - 284) / 3+1;
+
+            btnSavePastMonth.Left = btnSavePastWeek.Left + btnSavePastWeek.Width;
+            btnSavePastYear.Left = btnSavePastMonth.Left + btnSavePastMonth.Width;
         }
 
         private void currOutput_TextChanged(object sender, EventArgs e)

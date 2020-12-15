@@ -43,6 +43,8 @@
             this.currList1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // currSearch1
@@ -84,10 +86,13 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(213, 251);
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(201, 250);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(477, 37);
             this.dateTimePicker1.TabIndex = 4;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -96,12 +101,13 @@
             this.currInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currInput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.currInput.Location = new System.Drawing.Point(201, 42);
+            this.currInput.Location = new System.Drawing.Point(201, 46);
             this.currInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.currInput.Name = "currInput";
             this.currInput.Size = new System.Drawing.Size(314, 86);
             this.currInput.TabIndex = 5;
             this.currInput.Text = "0";
+            this.currInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.currInput.TextChanged += new System.EventHandler(this.currInput_TextChanged);
             // 
             // currOutput
@@ -110,56 +116,73 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currOutput.Enabled = false;
             this.currOutput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.currOutput.Location = new System.Drawing.Point(201, 137);
+            this.currOutput.Location = new System.Drawing.Point(201, 141);
             this.currOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.currOutput.Name = "currOutput";
             this.currOutput.Size = new System.Drawing.Size(314, 86);
             this.currOutput.TabIndex = 6;
             this.currOutput.Text = "0";
+            this.currOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.currOutput.TextChanged += new System.EventHandler(this.currOutput_TextChanged);
             // 
             // btnSavePastWeek
             // 
+            this.btnSavePastWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSavePastWeek.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btnSavePastWeek.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSavePastWeek.FlatAppearance.BorderSize = 0;
+            this.btnSavePastWeek.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
             this.btnSavePastWeek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePastWeek.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSavePastWeek.ForeColor = System.Drawing.Color.White;
-            this.btnSavePastWeek.Location = new System.Drawing.Point(213, 349);
+            this.btnSavePastWeek.Location = new System.Drawing.Point(142, 342);
             this.btnSavePastWeek.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSavePastWeek.Name = "btnSavePastWeek";
-            this.btnSavePastWeek.Size = new System.Drawing.Size(123, 54);
+            this.btnSavePastWeek.Size = new System.Drawing.Size(194, 80);
             this.btnSavePastWeek.TabIndex = 8;
             this.btnSavePastWeek.Text = "Save Past Week";
-            this.btnSavePastWeek.UseVisualStyleBackColor = true;
+            this.btnSavePastWeek.UseVisualStyleBackColor = false;
             this.btnSavePastWeek.Click += new System.EventHandler(this.btnSavePastWeek_Click);
             this.btnSavePastWeek.MouseEnter += new System.EventHandler(this.btnSavePastWeek_MouseEnter);
             this.btnSavePastWeek.MouseLeave += new System.EventHandler(this.btnSavePastWeek_MouseLeave);
             // 
             // btnSavePastMonth
             // 
+            this.btnSavePastMonth.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSavePastMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btnSavePastMonth.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSavePastMonth.FlatAppearance.BorderSize = 0;
+            this.btnSavePastMonth.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
             this.btnSavePastMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePastMonth.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSavePastMonth.ForeColor = System.Drawing.Color.White;
-            this.btnSavePastMonth.Location = new System.Drawing.Point(352, 340);
+            this.btnSavePastMonth.Location = new System.Drawing.Point(336, 342);
             this.btnSavePastMonth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSavePastMonth.Name = "btnSavePastMonth";
-            this.btnSavePastMonth.Size = new System.Drawing.Size(119, 58);
+            this.btnSavePastMonth.Size = new System.Drawing.Size(195, 80);
             this.btnSavePastMonth.TabIndex = 7;
-            this.btnSavePastMonth.Text = "btnSavePastMonth";
-            this.btnSavePastMonth.UseVisualStyleBackColor = true;
+            this.btnSavePastMonth.Text = "Save Past Month";
+            this.btnSavePastMonth.UseVisualStyleBackColor = false;
             this.btnSavePastMonth.Click += new System.EventHandler(this.btnSavePastMonth_Click);
             this.btnSavePastMonth.MouseEnter += new System.EventHandler(this.btnSavePastMonth_MouseEnter);
             this.btnSavePastMonth.MouseLeave += new System.EventHandler(this.btnSavePastMonth_MouseLeave);
             // 
             // btnReverse
             // 
+            this.btnReverse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btnReverse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReverse.FlatAppearance.BorderSize = 0;
+            this.btnReverse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
+            this.btnReverse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReverse.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F);
-            this.btnReverse.Location = new System.Drawing.Point(441, 268);
+            this.btnReverse.ForeColor = System.Drawing.Color.White;
+            this.btnReverse.Location = new System.Drawing.Point(149, 118);
             this.btnReverse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReverse.Name = "btnReverse";
-            this.btnReverse.Size = new System.Drawing.Size(74, 48);
+            this.btnReverse.Size = new System.Drawing.Size(44, 33);
             this.btnReverse.TabIndex = 9;
             this.btnReverse.Text = "Reverse";
-            this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.UseVisualStyleBackColor = false;
             this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
             // 
             // lblInput
@@ -168,7 +191,7 @@
             this.lblInput.AutoSize = true;
             this.lblInput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblInput.ForeColor = System.Drawing.Color.White;
-            this.lblInput.Location = new System.Drawing.Point(531, 46);
+            this.lblInput.Location = new System.Drawing.Point(531, 50);
             this.lblInput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInput.Name = "lblInput";
             this.lblInput.Size = new System.Drawing.Size(149, 78);
@@ -181,7 +204,7 @@
             this.lblOutput.AutoSize = true;
             this.lblOutput.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblOutput.ForeColor = System.Drawing.Color.White;
-            this.lblOutput.Location = new System.Drawing.Point(531, 141);
+            this.lblOutput.Location = new System.Drawing.Point(531, 145);
             this.lblOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOutput.Name = "lblOutput";
             this.lblOutput.Size = new System.Drawing.Size(147, 78);
@@ -190,16 +213,21 @@
             // 
             // btnSavePastYear
             // 
+            this.btnSavePastYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSavePastYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(47)))), ((int)(((byte)(57)))));
+            this.btnSavePastYear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSavePastYear.FlatAppearance.BorderSize = 0;
+            this.btnSavePastYear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(181)))), ((int)(((byte)(2)))));
             this.btnSavePastYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePastYear.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSavePastYear.ForeColor = System.Drawing.Color.White;
-            this.btnSavePastYear.Location = new System.Drawing.Point(518, 349);
+            this.btnSavePastYear.Location = new System.Drawing.Point(531, 342);
             this.btnSavePastYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSavePastYear.Name = "btnSavePastYear";
-            this.btnSavePastYear.Size = new System.Drawing.Size(110, 40);
+            this.btnSavePastYear.Size = new System.Drawing.Size(195, 80);
             this.btnSavePastYear.TabIndex = 12;
-            this.btnSavePastYear.Text = "btnSavePastYear";
-            this.btnSavePastYear.UseVisualStyleBackColor = true;
+            this.btnSavePastYear.Text = "Save Past Year";
+            this.btnSavePastYear.UseVisualStyleBackColor = false;
             this.btnSavePastYear.Click += new System.EventHandler(this.btnSavePastYear_Click);
             this.btnSavePastYear.MouseEnter += new System.EventHandler(this.btnSavePastYear_MouseEnter);
             this.btnSavePastYear.MouseLeave += new System.EventHandler(this.btnSavePastYear_MouseLeave);
@@ -242,19 +270,36 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "label2";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(118)))), ((int)(((byte)(134)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(142, 422);
+            this.panel1.TabIndex = 16;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(118)))), ((int)(((byte)(134)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(725, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(142, 422);
+            this.panel2.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(867, 422);
+            this.Controls.Add(this.btnReverse);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.currList1);
-            this.Controls.Add(this.btnSavePastYear);
             this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.lblInput);
-            this.Controls.Add(this.btnReverse);
             this.Controls.Add(this.btnSavePastWeek);
             this.Controls.Add(this.btnSavePastMonth);
             this.Controls.Add(this.currOutput);
@@ -263,11 +308,15 @@
             this.Controls.Add(this.currList2);
             this.Controls.Add(this.currSearch2);
             this.Controls.Add(this.currSearch1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btnSavePastYear);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MinimumSize = new System.Drawing.Size(620, 420);
             this.Name = "Form1";
             this.Text = "Currency Converter";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.Form1_ClientSizeChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +339,8 @@
         private System.Windows.Forms.ListBox currList1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
