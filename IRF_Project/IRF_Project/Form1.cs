@@ -24,11 +24,11 @@ namespace IRF_Project
         List<string> CurrenciesInput = new List<string>();
         List<string> CurrenciesOutput = new List<string>();
 
-        private string result, resultOutput;
-        private string selectedCurrency, selectedCurrencyOutput;
-        private bool IsFormLoaded = false;
-        private decimal arfolyam, arfolyamOutput;
-        private string inputString, outputString;
+        string result, resultOutput;
+        string selectedCurrency, selectedCurrencyOutput;
+        bool IsFormLoaded = false;
+        decimal arfolyam, arfolyamOutput;
+        string inputString, outputString;
 
         int tickWeekCountUp, tickWeekCountDown, tickMonthCountUp, tickMonthCountDown, tickYearCountUp, tickYearCountDown;
 
