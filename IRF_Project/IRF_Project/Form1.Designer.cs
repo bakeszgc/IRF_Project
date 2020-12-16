@@ -158,9 +158,9 @@
             this.lblInput.ForeColor = System.Drawing.Color.White;
             this.lblInput.Location = new System.Drawing.Point(708, 62);
             this.lblInput.Name = "lblInput";
-            this.lblInput.Size = new System.Drawing.Size(187, 96);
+            this.lblInput.Size = new System.Drawing.Size(233, 96);
             this.lblInput.TabIndex = 10;
-            this.lblInput.Text = "HUF";
+            this.lblInput.Text = "curr1";
             // 
             // lblOutput
             // 
@@ -170,9 +170,9 @@
             this.lblOutput.ForeColor = System.Drawing.Color.White;
             this.lblOutput.Location = new System.Drawing.Point(708, 178);
             this.lblOutput.Name = "lblOutput";
-            this.lblOutput.Size = new System.Drawing.Size(185, 96);
+            this.lblOutput.Size = new System.Drawing.Size(233, 96);
             this.lblOutput.TabIndex = 11;
-            this.lblOutput.Text = "EUR";
+            this.lblOutput.Text = "curr2";
             // 
             // currList1
             // 

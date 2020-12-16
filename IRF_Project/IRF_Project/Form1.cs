@@ -269,6 +269,13 @@ namespace IRF_Project
                                     select x).ToList();
         }
 
+        private void currSearch2_TextChanged(object sender, EventArgs e)
+        {
+            currList2.DataSource = (from x in CurrenciesOutput
+                                    where x.Contains(currSearch2.Text.ToUpper())
+                                    select x).ToList();
+        }
+
         private void currList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedCurrency = currList1.SelectedItem.ToString();
@@ -523,13 +530,6 @@ namespace IRF_Project
             AllProcessOutput();
             ButtonAutoSize();
             IsFormLoaded = true;
-        }
-
-        private void currSearch2_TextChanged(object sender, EventArgs e)
-        {
-            currList2.DataSource = (from x in CurrenciesOutput
-                                    where x.Contains(currSearch2.Text.ToUpper())
-                                    select x).ToList();
         }
     }
 }
