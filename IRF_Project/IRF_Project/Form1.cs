@@ -39,6 +39,12 @@ namespace IRF_Project
             GetCurr();
             currList1.DataSource = CurrenciesInput;
             currList2.DataSource = CurrenciesOutput;
+
+            btnReverse.Text = "\uE895";
+            label1.Text = "\uE71E";
+            label2.Text = "\uE71E";
+
+            dateTimePicker1.MaxDate = DateTime.Today;
         }        
 
         private void GetCurr()
@@ -515,9 +521,6 @@ namespace IRF_Project
         {
             AllProcess();
             AllProcessOutput();
-            btnReverse.Text = "\uE895";
-            label1.Text= "\uE71E";
-            label2.Text= "\uE71E";
             ButtonAutoSize();
             IsFormLoaded = true;
         }
